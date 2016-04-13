@@ -48,8 +48,6 @@
 --reference:/root/.nuget/packages/System.ComponentModel/4.0.1-rc2-23929/ref/netstandard1.0/System.ComponentModel.dll
 --reference:/root/.nuget/packages/System.ComponentModel.Annotations/4.1.0-rc2-23929/ref/netstandard1.4/System.ComponentModel.Annotations.dll
 --reference:/root/.nuget/packages/System.Console/4.0.0-rc2-23931/ref/netstandard1.3/System.Console.dll
---reference:/root/.nuget/packages/System.Data.Common/4.0.1-rc2-23931/ref/portable-net45+win8+wp8+wpa81/System.Data.Common.dll
---reference:/root/.nuget/packages/System.Data.SqlClient/4.1.0-rc2-23931/ref/netstandard1.3/System.Data.SqlClient.dll
 --reference:/root/.nuget/packages/System.Diagnostics.Debug/4.0.11-rc2-23931/ref/netstandard1.3/System.Diagnostics.Debug.dll
 --reference:/root/.nuget/packages/System.Diagnostics.DiagnosticSource/4.0.0-rc2-23931/lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll
 --reference:/root/.nuget/packages/System.Diagnostics.Process/4.1.0-rc2-23929/ref/netstandard1.4/System.Diagnostics.Process.dll
@@ -58,7 +56,7 @@
 --reference:/root/.nuget/packages/System.Dynamic.Runtime/4.0.11-rc2-23929/ref/netstandard1.3/System.Dynamic.Runtime.dll
 --reference:/root/.nuget/packages/System.Globalization/4.0.11-rc2-23931/ref/netstandard1.3/System.Globalization.dll
 --reference:/root/.nuget/packages/System.Globalization.Calendars/4.0.1-rc2-23931/ref/netstandard1.3/System.Globalization.Calendars.dll
---reference:/root/.nuget/packages/System.Globalization.Extensions/4.0.1-rc2-23931/ref/netstandard1.3/System.Globalization.Extensions.dll
+--reference:/root/.nuget/packages/System.Globalization.Extensions/4.0.1-rc2-23929/ref/netstandard1.3/System.Globalization.Extensions.dll
 --reference:/root/.nuget/packages/System.IO/4.1.0-rc2-23931/ref/netstandard1.5/System.IO.dll
 --reference:/root/.nuget/packages/System.IO.Compression/4.1.0-rc2-23931/ref/netstandard1.3/System.IO.Compression.dll
 --reference:/root/.nuget/packages/System.IO.Compression.ZipFile/4.0.1-rc2-23931/ref/netstandard1.3/System.IO.Compression.ZipFile.dll
@@ -72,10 +70,10 @@
 --reference:/root/.nuget/packages/System.Linq.Parallel/4.0.1-rc2-23929/ref/netstandard1.1/System.Linq.Parallel.dll
 --reference:/root/.nuget/packages/System.Linq.Queryable/4.0.1-rc2-23929/ref/netstandard1.0/System.Linq.Queryable.dll
 --reference:/root/.nuget/packages/System.Net.Http/4.0.1-rc2-23931/ref/netstandard1.1/System.Net.Http.dll
---reference:/root/.nuget/packages/System.Net.NameResolution/4.0.0-rc2-23931/ref/netstandard1.3/System.Net.NameResolution.dll
+--reference:/root/.nuget/packages/System.Net.NameResolution/4.0.0-rc2-23929/ref/netstandard1.3/System.Net.NameResolution.dll
 --reference:/root/.nuget/packages/System.Net.Primitives/4.0.11-rc2-23931/ref/netstandard1.3/System.Net.Primitives.dll
 --reference:/root/.nuget/packages/System.Net.Requests/4.0.11-rc2-23929/ref/netstandard1.3/System.Net.Requests.dll
---reference:/root/.nuget/packages/System.Net.Security/4.0.0-rc2-23931/ref/netstandard1.3/System.Net.Security.dll
+--reference:/root/.nuget/packages/System.Net.Security/4.0.0-rc2-23929/ref/netstandard1.3/System.Net.Security.dll
 --reference:/root/.nuget/packages/System.Net.Sockets/4.1.0-rc2-23931/ref/netstandard1.3/System.Net.Sockets.dll
 --reference:/root/.nuget/packages/System.Net.WebHeaderCollection/4.0.1-rc2-23929/ref/netstandard1.3/System.Net.WebHeaderCollection.dll
 --reference:/root/.nuget/packages/System.Numerics.Vectors/4.1.1-rc2-23929/ref/portable-net45+win8/System.Numerics.Vectors.dll
@@ -102,7 +100,7 @@
 --reference:/root/.nuget/packages/System.Security.Cryptography.Hashing.Algorithms/4.0.0-beta-23311/lib/DNXCore50/System.Security.Cryptography.Hashing.Algorithms.dll
 --reference:/root/.nuget/packages/System.Security.Cryptography.Primitives/4.0.0-rc2-23931/ref/netstandard1.3/System.Security.Cryptography.Primitives.dll
 --reference:/root/.nuget/packages/System.Security.Cryptography.X509Certificates/4.1.0-rc2-23931/ref/netstandard1.4/System.Security.Cryptography.X509Certificates.dll
---reference:/root/.nuget/packages/System.Security.Principal/4.0.1-rc2-23931/ref/netstandard1.0/System.Security.Principal.dll
+--reference:/root/.nuget/packages/System.Security.Principal/4.0.1-rc2-23929/ref/netstandard1.0/System.Security.Principal.dll
 --reference:/root/.nuget/packages/System.Text.Encoding/4.0.11-rc2-23931/ref/netstandard1.3/System.Text.Encoding.dll
 --reference:/root/.nuget/packages/System.Text.Encoding.Extensions/4.0.11-rc2-23931/ref/netstandard1.3/System.Text.Encoding.Extensions.dll
 --reference:/root/.nuget/packages/System.Text.RegularExpressions/4.0.12-rc2-23931/ref/netstandard1.3/System.Text.RegularExpressions.dll
@@ -112,7 +110,7 @@
 --reference:/root/.nuget/packages/System.Threading.Tasks.Extensions/4.0.0-rc2-23931/lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll
 --reference:/root/.nuget/packages/System.Threading.Tasks.Parallel/4.0.1-rc2-23929/ref/netstandard1.1/System.Threading.Tasks.Parallel.dll
 --reference:/root/.nuget/packages/System.Threading.Thread/4.0.0-rc2-23931/ref/netstandard1.3/System.Threading.Thread.dll
---reference:/root/.nuget/packages/System.Threading.ThreadPool/4.0.10-rc2-23931/ref/netstandard1.3/System.Threading.ThreadPool.dll
+--reference:/root/.nuget/packages/System.Threading.ThreadPool/4.0.10-rc2-23929/ref/netstandard1.3/System.Threading.ThreadPool.dll
 --reference:/root/.nuget/packages/System.Threading.Timer/4.0.1-rc2-23931/ref/netstandard1.2/System.Threading.Timer.dll
 --reference:/root/.nuget/packages/System.Xml.ReaderWriter/4.0.11-rc2-23931/ref/netstandard1.3/System.Xml.ReaderWriter.dll
 --reference:/root/.nuget/packages/System.Xml.XDocument/4.0.11-rc2-23931/ref/netstandard1.3/System.Xml.XDocument.dll
@@ -124,4 +122,5 @@
 --reference:/root/.nuget/packages/xunit.runner.utility/2.1.0/lib/dotnet/xunit.runner.utility.dotnet.dll
 /src/Program.cs
 /src/models/Hand.cs
+/src/models/Round.cs
 /src/tests/Poker_hands_tests.cs

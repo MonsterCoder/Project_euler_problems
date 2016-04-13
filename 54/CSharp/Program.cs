@@ -1,5 +1,5 @@
 ﻿
-namespace PokerHands
+namespace Poker
 {
     public class Program
     {

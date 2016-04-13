@@ -1,0 +1,18 @@
+{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "xunit": "2.1.0"
+    },
+    "frameworks": {
+        "netstandardapp1.5": {
+            "dependencies": {
+                "dotnet-test-xunit": "1.0.0-dev-128011-22",
+                "NETStandard.Library": "1.5.0-rc2-23931"
+            },
+            "imports": [
+                "dnxcore50"
+            ]
+        }
+    },
+    "testRunner": "xunit"
+}

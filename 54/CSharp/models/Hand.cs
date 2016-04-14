@@ -36,15 +36,17 @@ namespace Poker.models
         public double HeighCard {
             get {
                 var cards = _cards.GroupBy(c => Mapper[c[0]], c=> 1);
+                
                 var heigh_card_weight = cards.Select(c => c.Key * Math.Pow(100, c.Count() )).Max();
-                var two_pairs_special_weight =  cards.Count(g => g.Count()==2) * 140000;
-                var flush_special_weight   = _cards.Select(h => h[1]).Distinct().Count() == 1 ?  Math.Pow(100, 3) * 14 + 15 : 0;
-                var straight_special_weight  = IsStraight(_cards) ?  Math.Pow(100, 3) * 15 : 0;
+                var two_pairs_weight =  cards.Count(g => g.Count()==2) * 140000;
+                var flush_weight   = _cards.Select(h => h[1]).Distinct().Count() == 1 ?  Math.Pow(100, 3) * 14 + 15 +14 : 0;
+                var straight_weight  = IsStraight(_cards) ?  Math.Pow(100, 3) * 14 +16 + 15: 0;
+                var full_house = cards.Count(g => g.Count()==2) * cards.Count(g => g.Count()==3) * Math.Pow(100, 3) * 14 +17 + 16;
                 //Console.WriteLine(String.Join(",", _cards.ToArray()));
                 //Console.WriteLine(flush_special_weight);
                 //Console.WriteLine(straight_special_weight);
                 //Console.WriteLine(straight_special_weight);
-                return  heigh_card_weight + two_pairs_special_weight + flush_special_weight + straight_special_weight;
+                return  heigh_card_weight + two_pairs_weight + flush_weight + straight_weight + full_house;
             }
         }
         

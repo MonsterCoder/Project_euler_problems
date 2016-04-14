@@ -46,5 +46,12 @@ namespace Poker.tests
             var result = Round.Judge("2D 4D 5D 7D 8D AD AC AS KH QC");
             Assert.True(result == 1);
         }
+        
+        [Fact]
+        public void Full_house_vs_flash()
+        {
+            var result = Round.Judge("2D 2S 2H 3D 3C AD 9D KD 7D 6D");
+            Assert.True(result == 1);
+        }
     }
 }

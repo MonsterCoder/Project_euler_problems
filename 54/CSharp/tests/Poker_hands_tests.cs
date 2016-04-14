@@ -60,5 +60,19 @@ namespace Poker.tests
             var result = Round.Judge("2D 2S 2H 2D 3C AD AD KD KC AD");
             Assert.True(result == 1);
         }
+        
+        [Fact]
+        public void Straigh_flush_vs_four_of_kind()
+        {
+            var result = Round.Judge("2D 3D 4D 5D 6D AD AC AH AC KD");
+            Assert.True(result == 1);
+        }
+        
+        [Fact]
+        public void Royal_flash_vs_straigh_flush()
+        {
+            var result = Round.Judge("AD KD QD JD TD KC QC JH TH 9H");
+            Assert.True(result == 1);
+        }
     }
 }

@@ -39,14 +39,11 @@ namespace Poker.models
                 
                 var heigh_card_weight = cards.Select(c => c.Key * Math.Pow(100, c.Count() )).Max();
                 var two_pairs_weight =  cards.Count(g => g.Count()==2) * 140000;
-                var flush_weight   = _cards.Select(h => h[1]).Distinct().Count() == 1 ?  Math.Pow(100, 3) * 14 + 15 +14 : 0;
+                var flush_weight   = IsFlush(_cards) ?  Math.Pow(100, 3) * 14 + 15 +14 : 0;
                 var straight_weight  = IsStraight(_cards) ?  Math.Pow(100, 3) * 14 +16 + 15: 0;
                 var full_house = cards.Count(g => g.Count()==2) * cards.Count(g => g.Count()==3) * Math.Pow(100, 3) * 14 +17 + 16;
-                //Console.WriteLine(String.Join(",", _cards.ToArray()));
-                //Console.WriteLine(flush_special_weight);
-                //Console.WriteLine(straight_special_weight);
-                //Console.WriteLine(straight_special_weight);
-                return  heigh_card_weight + two_pairs_weight + flush_weight + straight_weight + full_house;
+                var straigh_flush = IsFlush(_cards) && IsStraight(_cards) ?  Math.Pow(100, 4) * 14 +14: 0;
+                return  heigh_card_weight + two_pairs_weight + flush_weight + straight_weight + full_house + straigh_flush;
             }
         }
         
@@ -56,6 +53,10 @@ namespace Poker.models
             return nums.Select( n=> n - nums.First()).Sum() == 10;
         }
         
+        private bool IsFlush(IEnumerable<string> cards) {
+           
+            return cards.Select(h => h[1]).Distinct().Count() == 1;
+        }
         
     }
 }

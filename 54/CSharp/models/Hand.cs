@@ -33,11 +33,15 @@ namespace Poker.models
             _cards = cards;
         }
         
-        public int HeighCard {
+        public double HeighCard {
             get {
-                return _cards.GroupBy(c => Mapper[c[0]]).Max(g => g.Key);
+            
+                return _cards.GroupBy(c => Mapper[c[0]], c=> 1).Select(c => c.Key * Math.Pow(100, c.Count() )).Max() + 
+                       _cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==2) * 140000;
             }
         }
+        
+        
         
     }
 }

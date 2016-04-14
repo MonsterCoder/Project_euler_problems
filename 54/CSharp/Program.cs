@@ -12,12 +12,12 @@ namespace Poker
             using(var reader = File.OpenText("p054_poker.txt")) {
                 var line = reader.ReadLine();
                 var player1_wins = 0;
+                
                 while(line !=null) {
-                    Console.WriteLine(line);
-                    Console.WriteLine(Game.Judge(line));
+                    player1_wins += Game.Judge(line);
                     line = reader.ReadLine();
                 }
-                
+                Console.WriteLine("Player 1 wins");
                 Console.WriteLine(player1_wins);
             }
         }

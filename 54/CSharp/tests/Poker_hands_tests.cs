@@ -4,7 +4,7 @@ using Poker.models;
 namespace Poker.tests
 {
     public class Hand_tests {
-        
+
         [Fact]
         public void Hight_card()
         {
@@ -46,14 +46,14 @@ namespace Poker.tests
             var result = Game.Judge("2D 4D 5D 7D 8D AD AC AS KH QC");
             Assert.True(result == 1);
         }
-        
+    
         [Fact]
         public void Full_house_vs_flash()
         {
             var result = Game.Judge("2D 2S 2H 3D 3C AD 9D KD 7D 6D");
             Assert.True(result == 1);
         }
-        
+
         [Fact]
         public void Four_of_kind_vs_full_house()
         {
@@ -74,5 +74,6 @@ namespace Poker.tests
             var result = Game.Judge("AD KD QD JD TD KC QC JH TH 9H");
             Assert.True(result == 1);
         }
+
     }
 }

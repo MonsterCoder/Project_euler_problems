@@ -22,18 +22,27 @@ namespace Poker.models
         public double Weight {
             get {
                 var cards = _cards.GroupBy(c => Mapper[c[0]], c=> 1);
+
+                //single card                        
+                var heigh_card = cards.Where(c => c.Count() == 1).Select(c => c.Key).OrderBy(c => c).LastOrDefault();
+                                
+                // pairs, tree, four of kind
+                var general =  cards.Where(c => c.Count() > 1).Select(c => c.Key * Math.Pow(100, c.Count())).OrderBy(c => c).LastOrDefault();
                 
-                var heigh_card_weight = cards
-                                        .Select(c => c.Key * Math.Pow(100, c.Count() ))
-                                        .Max();
-                                        
-                var two_2_pairs_weight =  cards.Count(g => g.Count()==2) * 140000;
-                var flush_weight  = IsFlush(_cards) ?  Math.Pow(100, 3) * 14 + 15 +14 : 0;
-                var straight_weight  = IsStraight(_cards) ?  Math.Pow(100, 3) * 14 +16 + 15: 0;
-                var full_house = cards.Count(g => g.Count()==2) * cards.Count(g => g.Count()==3) * Math.Pow(100, 3) * 14 +17 + 16;
+                //2 two pairs always weight more than 1 AA pairs                        
+                var two_2_pairs =  cards.Count(g => g.Count()==2) == 2 ? 140000 : 0;
+                
+                //Flush  weight more than AAA + K + ?
+                var flush  = IsFlush(_cards) ?  Math.Pow(100, 3) * 14 + 15 +14 : 0;
+               
+                var straight  = IsStraight(_cards) ?  Math.Pow(100, 3) * 14 +16 + 15 : 0;
+                
+                var full_house =  IsFullHouse(cards)  ?  Math.Pow(100, 3) * 14 + 17 + 16 : 0;
+                
                 var straigh_flush = IsFlush(_cards) && IsStraight(_cards) ?  Math.Pow(100, 4) * 14 +14 : 0;
-                
-                return  heigh_card_weight + two_2_pairs_weight + flush_weight + straight_weight + full_house + straigh_flush;
+                                Console.WriteLine(String.Join(",", _cards.ToArray()));
+
+                return  general + heigh_card + two_2_pairs + flush + straight + full_house + straigh_flush;
             }
         }
 
@@ -43,8 +52,11 @@ namespace Poker.models
         }
         
         private bool IsFlush(IEnumerable<string> cards) {
-           
             return cards.Select(h => h[1]).Distinct().Count() == 1;
+        }
+        
+        private bool IsFullHouse(IEnumerable<IGrouping<int,int>> cards) {
+            return cards.Count(g => g.Count()==2) * cards.Count(g => g.Count()==3) == 1;
         }
         
     }

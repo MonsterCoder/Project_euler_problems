@@ -10,7 +10,9 @@ namespace Poker.models
             var cards = hands.Split(' ');
             var _player1 = new Hand(cards.Take(5));
             var _player2 = new Hand(cards.Skip(5).Take(5));
-            
+            if (_player1.Weight==  _player2.Weight) {
+                Console.WriteLine(hands);
+            }
             return _player1.Weight > _player2.Weight ? 1 : 0;
         }
     }

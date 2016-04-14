@@ -35,9 +35,13 @@ namespace Poker.models
         
         public double HeighCard {
             get {
-            
-                return _cards.GroupBy(c => Mapper[c[0]], c=> 1).Select(c => c.Key * Math.Pow(100, c.Count() )).Max() + 
-                       _cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==2) * 140000;
+                var  cards = _cards.GroupBy(c => Mapper[c[0]], c=> 1);
+                var heigh_card_weight = cards.Select(c => c.Key * Math.Pow(100, c.Count() )).Max();
+                var two_pairs_special_weight =  cards.Count(g => g.Count()==2) * 140000;
+                var straing_special_weight = _cards.Select(h => h[1]).Distinct().Count() == 1 ?  Math.Pow(100, 3) * 14 +14 : 0;
+
+                return  heigh_card_weight + two_pairs_special_weight + straing_special_weight;
+                      ;
             }
         }
         

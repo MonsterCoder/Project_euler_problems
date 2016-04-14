@@ -29,7 +29,14 @@ namespace Poker.tests
         [Fact]
         public void Three_of_kind_vs_two_pairs()
         {
-            var result = Round.Judge("2D 2D 2D 3D 4D AD AC KS KH QC");
+            var result = Round.Judge("2S 2D 2K 3D 4D AD AC KS KH QC");
+            Assert.True(result == 1);
+        }
+        
+        [Fact]
+        public void Straight_vs_three_of_kind()
+        {
+            var result = Round.Judge("2D 4D 5D 7D 8D AD AC AS KH QC");
             Assert.True(result == 1);
         }
     }

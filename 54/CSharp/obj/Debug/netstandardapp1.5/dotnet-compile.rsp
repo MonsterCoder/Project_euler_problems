@@ -121,6 +121,6 @@
 --reference:/root/.nuget/packages/xunit.runner.reporters/2.1.0/lib/dotnet/xunit.runner.reporters.dotnet.dll
 --reference:/root/.nuget/packages/xunit.runner.utility/2.1.0/lib/dotnet/xunit.runner.utility.dotnet.dll
 /src/Program.cs
+/src/models/Game.cs
 /src/models/Hand.cs
-/src/models/Round.cs
 /src/tests/Poker_hands_tests.cs

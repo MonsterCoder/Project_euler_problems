@@ -53,5 +53,12 @@ namespace Poker.tests
             var result = Round.Judge("2D 2S 2H 3D 3C AD 9D KD 7D 6D");
             Assert.True(result == 1);
         }
+        
+        [Fact]
+        public void Four_of_kind_vs_full_house()
+        {
+            var result = Round.Judge("2D 2S 2H 3D 3C AD 9D KD 7D 6D");
+            Assert.True(result == 1);
+        }
     }
 }

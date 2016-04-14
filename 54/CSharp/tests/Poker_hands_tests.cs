@@ -13,9 +13,9 @@ namespace Poker.tests
         }
         
         [Fact]
-        public void One_pair_vs_ight_card()
+        public void One_pair_vs_hight_card()
         {
-            var result = Round.Judge("5H 8C 6S 2S 2D AC KS QS TD JD");
+            var result = Round.Judge("5H 8C 6S 2S 2D AC KS QS TD 9D");
             Assert.True(result == 1);
         }
         
@@ -35,6 +35,13 @@ namespace Poker.tests
         
         [Fact]
         public void Straight_vs_three_of_kind()
+        {
+            var result = Round.Judge("2C 3D 4D 5H 6D AD AC AS KH QC");
+            Assert.True(result == 1);
+        }
+        
+        [Fact]
+        public void flash_vs_straight()
         {
             var result = Round.Judge("2D 4D 5D 7D 8D AD AC AS KH QC");
             Assert.True(result == 1);

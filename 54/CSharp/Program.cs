@@ -1,5 +1,7 @@
 ﻿
 using System.IO;
+using System;
+using  Poker.models;
 
 namespace Poker
 {
@@ -7,6 +9,17 @@ namespace Poker
     {
         public static void Main(string[] args)
         {
+            using(var reader = File.OpenText("p054_poker.txt")) {
+                var line = reader.ReadLine();
+                var player1_wins = 0;
+                while(line !=null) {
+                    Console.WriteLine(line);
+                    Console.WriteLine(Game.Judge(line));
+                    line = reader.ReadLine();
+                }
+                
+                Console.WriteLine(player1_wins);
+            }
         }
     }
     

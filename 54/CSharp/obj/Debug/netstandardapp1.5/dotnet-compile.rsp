@@ -7,6 +7,7 @@
 --suppress-warning:CS1702
 --suppress-warning:CS1705
 --optimize:False
+--emit-entry-point:True
 --file-version:1.0.0.0
 --version:1.0.0.0
 --informational-version:1.0.0

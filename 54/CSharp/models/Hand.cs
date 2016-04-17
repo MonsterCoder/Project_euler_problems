@@ -31,9 +31,15 @@ namespace Poker.models
         
         public Tuple<int,double> Weight {
             get {
-                
-                return  _ranks.Select((r, order) => r.Score(order)).Where(r => r.Item2 > 0).OrderBy(r => r.Item1).Last();
+                return  _ranks.Select((r, order) => r.Score(order))
+                .Where(r => r.Item2 > 0)
+                .OrderBy(r => r.Item1)
+                .Last();
             }
+        }
+        
+        public override string ToString() {
+           return String.Join(" ",  _cards.OrderBy(c => Rank.Mapper[c[0]]).ToArray()) + " : " +this.Weight.Item1 + " : " + this.Weight.Item2;
         }
 
     }

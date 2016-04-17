@@ -11,7 +11,7 @@ namespace Poker.models
     
     public abstract class Rank : IRank {
         
-        protected IDictionary<char, int>  Mapper = new Dictionary<char, int> {
+        public static readonly IDictionary<char, int>  Mapper = new Dictionary<char, int> {
              {'1',1}, {'2',2}, {'3',3}, {'4',4}, {'5',5}, {'6',6}, {'7',7}, {'8',8}, {'9',9}, {'T',10}, {'J',11}, {'Q',12}, {'K',13}, {'A',14}
         };
         
@@ -50,7 +50,7 @@ namespace Poker.models
     }
     
     public class Straight_Flush: Straight {
-        public Straight_Flush(IEnumerable<string> cards ) : base(cards  ) {
+        public Straight_Flush(IEnumerable<string> cards) : base(cards) {
             
         }
         
@@ -68,7 +68,7 @@ namespace Poker.models
     
     public class Four_Of_Kinds: Rank {
         
-        public Four_Of_Kinds(IEnumerable<string> cards ) : base(cards  ) {
+        public Four_Of_Kinds(IEnumerable<string> cards) : base(cards) {
             
         }
         
@@ -78,19 +78,21 @@ namespace Poker.models
         
         protected override double Remainder {
             get{
-                 return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==4).First().Key * 15 + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).First().Key;
+                 return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==4).First().Key * 15 
+                 + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).First().Key;
             }
            
         }
     }
     
     public class Full_House: Rank {
-        public Full_House(IEnumerable<string> cards ) : base(cards  ) {
+        public Full_House(IEnumerable<string> cards) : base(cards) {
             
         }
         protected override bool Match() {
 
-            return cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==3) == 1 && cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==2) == 1;
+            return cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==3) == 1 
+                && cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==2) == 1;
         }
         
        protected override double Remainder { 
@@ -179,8 +181,8 @@ namespace Poker.models
         
        protected override double Remainder {
            get {
-               return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==2).Select(c=> c.Key * Math.Pow(15, 3)).First()
-            + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).Select((c,idx)=> c.Key * Math.Pow(15, idx)).Sum();
+               return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==2).Select(c=> c.Key * Math.Pow(100, 3)).First()
+            + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).OrderBy(g => g.Key).Select((c,idx)=> c.Key * Math.Pow(100, idx)).Sum();
            }
 
        }

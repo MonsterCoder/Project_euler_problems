@@ -4,11 +4,17 @@ using Poker.models;
 namespace Poker.tests
 {
     public class Hand_tests {
-
         [Fact]
         public void Hight_card()
         {
             var result = Game.Judge("8C TS KC 9H 4S 7D 2S 5D 3S AC");
+            Assert.True(result == 0);
+        }
+        
+        [Fact]
+        public void Hight_card_2()
+        {
+            var result = Game.Judge("8C TS KC QH JS 4D 2S 5D 3S AC");
             Assert.True(result == 0);
         }
         
@@ -92,11 +98,17 @@ namespace Poker.tests
         [Fact]
         public void One_pair_with_heigh_cards_2()
         {
-            var result = Game.Judge("7C 5C 9C 8S 7D 6D 8D 6C 9S JH");
+            var result = Game.Judge("5C 2C 3C 4S 5D 6D AD KC 9S JH");
             Assert.True(result == 1);
         }
-        
-        
+              
+        [Fact]
+        public void One_pair_with_one_pair()
+        {
+            var result = Game.Judge("6D 7C 5D 5H 3S 5C JC 2H 5S 3D");
+            Assert.True(result == 0);
+        }
+
 
     }
 }

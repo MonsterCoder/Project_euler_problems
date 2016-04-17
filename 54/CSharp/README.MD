@@ -15,14 +15,8 @@ The application can run in a docker container based on offical .Net Core image.
 
 3: run tests
    
-    docker run -it -v $(pwd):/src --name pokerhands problem54 dotnet test
+    docker run -it -v $(pwd):/src --rm  problem54
 
 4: run
 
-Within the container bash
-
-    dotnet run
-    
-or 
-
-    docker run -it -v $(pwd):/src problem54 dotnet
+    docker run -it -v $(pwd):/src --rm  problem54 sh run.sh

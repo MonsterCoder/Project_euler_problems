@@ -76,6 +76,13 @@ namespace Poker.tests
         }
         
         [Fact]
+        public void Royal_flash_vs_straigh_flush_2()
+        {
+            var result = Game.Judge("AD KD QD JD TD AC KC QH JH TH");
+            Assert.True(result == 1);
+        }
+        
+        [Fact]
         public void One_pair_with_heigh_cards()
         {
             var result = Game.Judge("AD AC TD KD 3D AH AD TH KH 2D");

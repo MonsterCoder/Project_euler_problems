@@ -74,6 +74,20 @@ namespace Poker.tests
             var result = Game.Judge("AD KD QD JD TD KC QC JH TH 9H");
             Assert.True(result == 1);
         }
+        
+        [Fact]
+        public void One_pair_with_heigh_cards()
+        {
+            var result = Game.Judge("AD AC TD KD 3D AH AD TH KH 2D");
+            Assert.True(result == 1);
+        }
+        
+        [Fact]
+        public void One_pair_with_heigh_cards_2()
+        {
+            var result = Game.Judge("4D 4C AD 2D 3D 4H 4D KH QH JD");
+            Assert.True(result == 1);
+        }
 
     }
 }

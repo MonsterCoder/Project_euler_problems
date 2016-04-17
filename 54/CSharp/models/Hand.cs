@@ -6,7 +6,6 @@ namespace Poker.models
 {
     public class Hand {
         readonly IEnumerable<string> _cards = null;
-        readonly string name = null;
         IDictionary<char, int>  Mapper = new Dictionary<char, int> {
              {'1',1}, {'2',2}, {'3',3}, {'4',4}, {'5',5}, {'6',6}, {'7',7}, {'8',8}, {'9',9}, {'T',10}, {'J',11}, {'Q',12}, {'K',13}, {'A',14}
         };
@@ -24,10 +23,10 @@ namespace Poker.models
                 var cards = _cards.GroupBy(c => Mapper[c[0]], c=> 1);
 
                 //single card                        
-                var heigh_card = cards.Where(c => c.Count() == 1).Select(c => c.Key).OrderBy(c => c).LastOrDefault();
+                var heigh_card = cards.Where(c => c.Count() == 1).Select( c => c.Key).OrderBy(c => c).Select((c,idx)=> c * Math.Pow(10, idx) ).Sum();
                                 
-                // pairs, tree, four of kind
-                var general =  cards.Where(c => c.Count() > 1).Select(c => c.Key * Math.Pow(100, c.Count())).OrderBy(c => c).LastOrDefault();
+                // pairs, three, four of kind
+                var general =  cards.Where(c => c.Count() > 1).Select(c => c.Key * Math.Pow(100, c.Count())).Sum();
                 
                 //2 two pairs always weight more than 1 AA pairs                        
                 var two_2_pairs =  cards.Count(g => g.Count()==2) == 2 ? 140000 : 0;
@@ -40,9 +39,8 @@ namespace Poker.models
                 var full_house =  IsFullHouse(cards)  ?  Math.Pow(100, 3) * 14 + 17 + 16 : 0;
                 
                 var straigh_flush = IsFlush(_cards) && IsStraight(_cards) ?  Math.Pow(100, 4) * 14 +14 : 0;
-                                Console.WriteLine(String.Join(",", _cards.ToArray()));
-
-                return  general + heigh_card + two_2_pairs + flush + straight + full_house + straigh_flush;
+                                
+                return  (general  + two_2_pairs + flush + straight + full_house + straigh_flush) * Math.Pow(10, 6) +  heigh_card;
             }
         }
 

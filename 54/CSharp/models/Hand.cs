@@ -5,57 +5,37 @@ using System.Linq;
 namespace Poker.models
 {
     public class Hand {
+
+        readonly IEnumerable<IRank> _ranks = null;
         readonly IEnumerable<string> _cards = null;
-        IDictionary<char, int>  Mapper = new Dictionary<char, int> {
-             {'1',1}, {'2',2}, {'3',3}, {'4',4}, {'5',5}, {'6',6}, {'7',7}, {'8',8}, {'9',9}, {'T',10}, {'J',11}, {'Q',12}, {'K',13}, {'A',14}
-        };
         
         public Hand(IEnumerable<string> cards) {
             if ( cards?.Count() != 5 ) {
                 throw new Exception();
             }
-            
             _cards = cards;
+            
+            _ranks = new List<IRank> {
+                new High_Card(cards),
+                new One_Pair(cards),
+                new Two_Pairs(cards),
+                new Three_Of_Kinds(cards),
+                new Straight(cards),
+                new Flush(cards),
+                new Full_House(cards),
+                new Four_Of_Kinds(cards),
+                new Straight_Flush(cards),
+                new Royal_Flush(cards)
+            };
         }
         
-        public double Weight {
+        public Tuple<int,double> Weight {
             get {
-                var cards = _cards.GroupBy(c => Mapper[c[0]], c=> 1);
-
-                //single card                        
-                var heigh_card = cards.Where(c => c.Count() == 1).Select( c => c.Key).OrderBy(c => c).Select((c,idx)=> c * Math.Pow(10, idx) ).Sum();
-                                
-                // pairs, three, four of kind
-                var general =  cards.Where(c => c.Count() > 1).Select(c => c.Key * Math.Pow(100, c.Count())).Sum();
                 
-                //2 two pairs always weight more than 1 AA pairs                        
-                var two_2_pairs =  cards.Count(g => g.Count()==2) == 2 ? 140000 : 0;
-                
-                //Flush  weight more than AAA + K + ?
-                var flush  = IsFlush(_cards) ?  Math.Pow(100, 3) * 14 + 15 +14 : 0;
-               
-                var straight  = IsStraight(_cards) ?  Math.Pow(100, 3) * 14 +16 + 15 : 0;
-                
-                var full_house =  IsFullHouse(cards)  ?  Math.Pow(100, 3) * 14 + 17 + 16 : 0;
-                
-                var straigh_flush = IsFlush(_cards) && IsStraight(_cards) ?  Math.Pow(100, 4) * 14 +14 : 0;
-                                
-                return  (general  + two_2_pairs + flush + straight + full_house + straigh_flush) * Math.Pow(10, 6) +  heigh_card;
+                return  _ranks.Select((r, order) => r.Score(order)).Where(r => r.Item2 > 0).OrderBy(r => r.Item1).Last();
             }
         }
 
-        private bool IsStraight(IEnumerable<string> cards) {
-            var nums = cards.Select(c => Mapper[c[0]]).OrderBy(c => c);
-            return nums.Select( n=> n - nums.First()).Sum() == 10;
-        }
-        
-        private bool IsFlush(IEnumerable<string> cards) {
-            return cards.Select(h => h[1]).Distinct().Count() == 1;
-        }
-        
-        private bool IsFullHouse(IEnumerable<IGrouping<int,int>> cards) {
-            return cards.Count(g => g.Count()==2) * cards.Count(g => g.Count()==3) == 1;
-        }
-        
     }
+    
 }

@@ -10,10 +10,27 @@ namespace Poker.models
             var cards = hands.Split(' ');
             var _player1 = new Hand(cards.Take(5));
             var _player2 = new Hand(cards.Skip(5).Take(5));
-            if (_player1.Weight==  _player2.Weight) {
-                Console.WriteLine(hands);
+
+            var result = false;
+            if (_player1.Weight.Item1 ==  _player2.Weight.Item1) {
+                result =  _player1.Weight.Item2 >  _player2.Weight.Item2 ? true : false;
+            } else {
+                result = _player1.Weight.Item1 > _player2.Weight.Item1 ? true : false;
             }
-            return _player1.Weight > _player2.Weight ? 1 : 0;
+            
+            if (result) {
+                Console.WriteLine("----------");
+                Console.WriteLine(hands);
+                Console.WriteLine(_player1.Weight.Item1 + "  " +_player2.Weight.Item1);
+                Console.WriteLine(_player1.Weight.Item2 + "  "+_player2.Weight.Item2);
+            }
+
+
+            
+            if (_player1.Weight.Item1 ==  _player2.Weight.Item1) {
+                return _player1.Weight.Item2 >  _player2.Weight.Item2 ? 1 : 0;
+            }
+            return _player1.Weight.Item1 > _player2.Weight.Item1 ? 1 : 0;
         }
     }
 }

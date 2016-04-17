@@ -1,3 +1,4 @@
 # Project_euler_problems
 Project euler solutions in various language
-Implement in both imperative & functional languages
+
+Each problem will be Implemented in one imperative language and one functional language

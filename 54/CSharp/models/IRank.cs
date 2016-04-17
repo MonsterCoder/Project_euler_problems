@@ -23,6 +23,10 @@ namespace Poker.models
         
         protected abstract bool Match();
         
+        protected IEnumerable<IGrouping<int, int>> GetGroups(int level) {
+            return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count() == level).OrderBy(c => c.Key);
+        }
+        
         protected virtual double Remainder {
             get {
                 return 0;
@@ -44,7 +48,7 @@ namespace Poker.models
         }
         
         protected override bool Match() {
-            return base.Match() && cards.GroupBy(c => Mapper[c[0]], c=> 1).Max(c => c.Key) == Mapper['A'];
+            return base.Match() && GetGroups(1).Max(c => c.Key) == Mapper['A'];
         }
 
     }
@@ -60,7 +64,7 @@ namespace Poker.models
         
         protected override double Remainder {
             get {
-                return cards.GroupBy(c => Mapper[c[0]], c=> 1).Max(c => c.Key);
+                return GetGroups(1).Max(c => c.Key);
             }
         } 
         
@@ -73,13 +77,13 @@ namespace Poker.models
         }
         
         protected override bool Match() {
-            return cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==4) == 1;
+            return GetGroups(4).Count() == 1;
         }
         
         protected override double Remainder {
             get{
-                 return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==4).First().Key * 15 
-                 + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).First().Key;
+                 return GetGroups(4).First().Key * 15 
+                 + GetGroups(1).First().Key;
             }
            
         }
@@ -97,8 +101,8 @@ namespace Poker.models
         
        protected override double Remainder { 
            get{
-             return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==3).First().Key * 15
-             + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==2).First().Key;
+             return GetGroups(3).First().Key * 15
+             + GetGroups(2).First().Key;
                
            }
        }
@@ -141,14 +145,14 @@ namespace Poker.models
            
        }
         protected override bool Match() {
-            return cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==3) == 1 && cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==2) == 0;
+            return GetGroups(3).Count() == 1 && GetGroups(1).Count() == 2;
         }
         
        protected override double Remainder  {
            get{
                 return 
-                cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==3).Select(c => c.Key ).First() *  Math.Pow(15, 3) +
-                cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).OrderBy(c => c.Key).Select((c,idx)=> c.Key * Math.Pow(15, idx)).Sum(); 
+                GetGroups(3).Select(c => c.Key ).First() *  Math.Pow(15, 3) +
+                GetGroups(1).Select((c,idx)=> c.Key * Math.Pow(15, idx)).Sum(); 
            }
        }
    }
@@ -158,13 +162,13 @@ namespace Poker.models
            
        }
         protected override bool Match() {
-            return  cards.GroupBy(c => Mapper[c[0]], c=> 1).Count(g => g.Count()==2) == 2;
+            return  GetGroups(2).Count() == 2;
         }
         
        protected override double Remainder {
            get {
-               return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==2).OrderBy(c => c.Key).Select((c,idx)=> c.Key * Math.Pow(15, idx+2)).Sum()
-            + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).Select((c,idx)=> c.Key * Math.Pow(15, idx)).Sum();
+               return GetGroups(2).Select((c,idx)=> c.Key * Math.Pow(15, idx+2)).Sum()
+            + GetGroups(1).Select((c,idx)=> c.Key * Math.Pow(15, idx)).Sum();
            }
 
        }
@@ -176,13 +180,13 @@ namespace Poker.models
        }
         protected override bool Match() {
             var groups = cards.GroupBy(c => Mapper[c[0]], c=> 1);
-            return   groups.Count(g => g.Count()==3) == 0 && groups.Count(g => g.Count()==2) == 1;
+            return   GetGroups(3).Count() == 0 && GetGroups(2).Count() == 1;
         }
         
        protected override double Remainder {
            get {
-               return cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==2).Select(c=> c.Key * Math.Pow(100, 3)).First()
-            + cards.GroupBy(c => Mapper[c[0]], c=> 1).Where(g => g.Count()==1).OrderBy(g => g.Key).Select((c,idx)=> c.Key * Math.Pow(100, idx)).Sum();
+               return GetGroups(2).Select(c=> c.Key * Math.Pow(100, 3)).First()
+            + GetGroups(1).Select((c,idx)=> c.Key * Math.Pow(100, idx)).Sum();
            }
 
        }
@@ -198,7 +202,7 @@ namespace Poker.models
         }
         
        public override Tuple<int, double> Score(int order) {
-           var t = cards.Select(c => Mapper[c[0]]).OrderBy(c => c).Select((c,idx)=> c * Math.Pow(15, idx)).Sum();
+           var t = GetGroups(1).Select((c,idx)=> c.Key * Math.Pow(15, idx)).Sum();
            return new Tuple<int,double>(order, t);
        }
     }  

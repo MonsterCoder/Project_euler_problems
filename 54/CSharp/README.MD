@@ -20,3 +20,6 @@ The application can run in a docker container based on offical .Net Core image.
 4: run
 
     docker run -it -v $(pwd):/src --rm  problem54 sh run.sh
+    
+5: 
+    docker run -it -v $(pwd):/src --rm  problem54 /bin/bash

@@ -208,7 +208,7 @@
           "lib/netstandard1.5/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
-      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc3-20564": {
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc3-20565": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.11-rc2-24008",
@@ -224,7 +224,7 @@
           "lib/netstandard1.3/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/1.0.0-rc3-20564": {
+      "Microsoft.Extensions.Logging.Abstractions/1.0.0-rc3-20565": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.11-rc2-24008",
@@ -243,7 +243,7 @@
           "lib/netstandard1.1/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc3-20564": {
+      "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc3-20565": {
         "type": "package",
         "dependencies": {
           "System.AppContext": "4.1.0-rc2-24008",
@@ -2513,7 +2513,7 @@
           "lib/netstandard1.5/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
-      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc3-20564": {
+      "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc3-20565": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.11-rc2-24008",
@@ -2529,7 +2529,7 @@
           "lib/netstandard1.3/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/1.0.0-rc3-20564": {
+      "Microsoft.Extensions.Logging.Abstractions/1.0.0-rc3-20565": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.11-rc2-24008",
@@ -2548,7 +2548,7 @@
           "lib/netstandard1.1/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc3-20564": {
+      "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc3-20565": {
         "type": "package",
         "dependencies": {
           "System.AppContext": "4.1.0-rc2-24008",
@@ -5325,11 +5325,11 @@
         "lib/netstandard1.5/Microsoft.Extensions.DependencyModel.dll"
       ]
     },
-    "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc3-20564": {
-      "sha512": "Aa/4zSAekfwXwUFsk/tAX2Bd1vf8WMag0elWYcmB63t7A9UR+kRZeJ3oo8fvwWjxMDu9P07DQOIvQfgxMaw+XQ==",
+    "Microsoft.Extensions.FileSystemGlobbing/1.0.0-rc3-20565": {
+      "sha512": "g76dttXjVcaR6p6UmgINGqLkn73HROtfyuaAasVbgX7GOhpu1xX1XXlHlKFMBj46cnYeoY//1ToSfQv6KUOz5Q==",
       "type": "package",
       "files": [
-        "Microsoft.Extensions.FileSystemGlobbing.1.0.0-rc3-20564.nupkg.sha512",
+        "Microsoft.Extensions.FileSystemGlobbing.1.0.0-rc3-20565.nupkg.sha512",
         "Microsoft.Extensions.FileSystemGlobbing.nuspec",
         "lib/net451/Microsoft.Extensions.FileSystemGlobbing.dll",
         "lib/net451/Microsoft.Extensions.FileSystemGlobbing.xml",
@@ -5337,11 +5337,11 @@
         "lib/netstandard1.3/Microsoft.Extensions.FileSystemGlobbing.xml"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/1.0.0-rc3-20564": {
-      "sha512": "5r3uvpzBmsbcnX39gKBx7vNOBnUR1MStjs9Gfva8Qo/H4435SbCgM+YUL/yZFrsMvwaAaMTHkUz22ZhGrsvHew==",
+    "Microsoft.Extensions.Logging.Abstractions/1.0.0-rc3-20565": {
+      "sha512": "Woy6ZTE3V+cpP0LemvdKp4mLWE+AyrBqV/UgqE2bE8keQQPSHbHI5k4U14pN1DQTiqAPfeDv4WFBG9T0bWxOaQ==",
       "type": "package",
       "files": [
-        "Microsoft.Extensions.Logging.Abstractions.1.0.0-rc3-20564.nupkg.sha512",
+        "Microsoft.Extensions.Logging.Abstractions.1.0.0-rc3-20565.nupkg.sha512",
         "Microsoft.Extensions.Logging.Abstractions.nuspec",
         "lib/netcore50/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netcore50/Microsoft.Extensions.Logging.Abstractions.xml",
@@ -5349,11 +5349,11 @@
         "lib/netstandard1.1/Microsoft.Extensions.Logging.Abstractions.xml"
       ]
     },
-    "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc3-20564": {
-      "sha512": "IEGcElKIGLA+dc9B5/7bGZYhN+1uLYIHKT+kIsuE7iAwdXKgAA6520Byg5kh8JXfNG4JsrcFoni+mh9xeq4S2A==",
+    "Microsoft.Extensions.PlatformAbstractions/1.0.0-rc3-20565": {
+      "sha512": "WeCD09lL/izYTzp0CffFvFqb0LXUIGja1NOvhOAFouyfRbm2yJQn/XZ/Li6ZzAoFhNYKz12U6PlqYaJsOO2D5g==",
       "type": "package",
       "files": [
-        "Microsoft.Extensions.PlatformAbstractions.1.0.0-rc3-20564.nupkg.sha512",
+        "Microsoft.Extensions.PlatformAbstractions.1.0.0-rc3-20565.nupkg.sha512",
         "Microsoft.Extensions.PlatformAbstractions.nuspec",
         "lib/net451/Microsoft.Extensions.PlatformAbstractions.dll",
         "lib/net451/Microsoft.Extensions.PlatformAbstractions.xml",

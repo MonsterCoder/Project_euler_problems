@@ -17,6 +17,7 @@ namespace Poker
                     player1_wins += Game.Judge(line);
                     line = reader.ReadLine();
                 }
+                
                 Console.WriteLine("Player 1 wins");
                 Console.WriteLine(player1_wins);
             }

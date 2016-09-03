@@ -6,7 +6,7 @@ defmodule Triangular do
   def run(n) do
     generate
     |> Stream.filter(&(Factor.of(&1) |> length > n))
-    |> Enum.at 0
+    |> Enum.at(0)
   end
 end
 
